@@ -1,8 +1,6 @@
-// lib/screens/splash_screen.dart
-
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
+import 'onboarding_screen.dart'; // 온보딩 화면으로 연결
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,10 +13,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // 2.5초 후에 로그인 화면으로 이동
+    // 2.5초 후에 온보딩 질문 화면으로 이동
     Timer(const Duration(milliseconds: 2500), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const LoginScreen()),
+        // 화면 전환에 페이드 효과를 주기 위해 PageRouteBuilder 사용
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => const OnboardingScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation, // 페이드 인/아웃 애니메이션
+              child: child,
+            );
+          },
+          transitionDuration: const Duration(milliseconds: 700), // 전환 속도
+        ),
       );
     });
   }
@@ -38,10 +46,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(24),
               ),
-              child: const Icon(
-                Icons.flight_takeoff_rounded,
-                size: 60,
-                color: Color(0xFF4A64F2),
+              child: Image.asset(
+                'assets/images/icon.png',
+                width: 60,
+                height: 60,
               ),
             ),
             const SizedBox(height: 24),

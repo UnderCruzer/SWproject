@@ -15,8 +15,21 @@ dependencies:
     # 소셜 로그인
   google_sign_in: ^6.2.1
 
+  google_nav_bar: ^5.0.6
+
+  shared_preferences: ^2.2.3
+
+  http: ^1.2.1
+
+  uuid: ^4.4.0
     # API 통신
   dio: ^5.4.3+1
+
+  intl : ^0.18.1
+
+  geolocator: ^10.1.0
+
+  google_maps_flutter: ^2.5.3
 
     # 아이콘 사용
   font_awesome_flutter: ^10.7.0
@@ -29,7 +42,7 @@ dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
 
 flutter_launcher_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
   image_path: "assets/icon/app_icon.png"
 
